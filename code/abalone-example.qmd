@@ -39,13 +39,13 @@ H~A~: **pH does predict abalone growth (change in shell surface area per day, mm
 ## b. Cleaning
 
 ```{r abalone-data-cleaning}
-# 
-abalone_clean <- abalone  
-  # 
-  clean_names()  
-  # 
-  select(mean_p_h, change_in_area_mm2_d_1_25)  
-  # 
+# new data frame from abalone
+abalone_clean <- abalone |>  
+  # cleaned names with underscores and no caps
+  clean_names()  |> 
+  # selected for solumns of interest
+  select(mean_p_h, change_in_area_mm2_d_1_25)  |> 
+  # change the column names
   rename(mean_ph = mean_p_h, 
          change_in_area = change_in_area_mm2_d_1_25)
 ```
@@ -55,10 +55,10 @@ Don't forget to look at your data! Use `View(abalone_clean)` in the _Console_.
 ## c. Exploratory data visualization
 
 ```{r abalone-scatterplot}
-# 
-ggplot(data = abalone_clean, # 
-       aes(x = mean_ph, # 
-           y = change_in_area)) 
+# base-layer: ggplot
+ggplot(data = abalone_clean, # data is abalone_clean
+       aes(x = mean_ph, # x is mean_ph (predictor variable)
+           y = change_in_area)) # y is change in area (response variable)
   # 
   geom_point(size = 4,
              stroke = 1,
@@ -68,7 +68,7 @@ ggplot(data = abalone_clean, #
 
 Where does the missing value come from?  
 
-**insert response here**  
+**The missing value came from tank B1B**  
 
 Don't forget to turn your warnings off either in the individual code chunk or in the YAML at the top of the file.
 

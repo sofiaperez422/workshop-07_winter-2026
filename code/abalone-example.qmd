@@ -92,6 +92,8 @@ plot(abalone_model)    #
 
 ```
 
+**residuals seem homoscedastic (consistent across values) based on Residuals vs. Fitted and Scale-Location plots. Residuals seem normally distributed based on the QQ plots, the points mostly follow the reference line. There were also no outliers that might influence model estimates or predictions based on Residuals vs. Leverage.**
+
 ### Model summary
 
 ```{r abalone-model-summary}
